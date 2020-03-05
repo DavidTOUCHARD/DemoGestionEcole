@@ -17,14 +17,12 @@
 	<h1>AUTHENTIFICATION</h1>
 	
 
-	<!-- On intègre un formulaire à la page HTML -->
+	<!-- On intÃ¨gre un formulaire Ã  la page HTML -->
 	<form id="test" action="ConnexionServlet" method="post">
 		<div class="login">
-			<p for="nom">Login :</p> <input type="text" id="Login"
+			<p for="nom">Login :</p> <input type="text" placeholder="Login" id="Login"
 				name="loginuser" required>
-
-			<p for="prenom">MDP :</p> <input type="password"  id="Password" name="mdpuser" required/>
-
+			<p for="prenom">MDP :</p> <input type="password" placeholder="Password"  id="Password" name="mdpuser" required/>
 		<input type="submit" value="Envoyer">
 		</div>
 	</form>
