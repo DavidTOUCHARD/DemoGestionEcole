@@ -13,12 +13,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<p class="text-left">Rechercher un etudiant</p>
 <form action ="ReadEtudiantServlet" method="post">
-<label for="site-search">Rechercher un étudiant:</label>
 <input type="search" id="nom" name="nom"
-       aria-label="Rechercher un étudiant">
+       aria-label="Rechercher un ÃƒÂ©tudiant" placeholder="nom">
 <input type="search" id="prenom" name="prenom"
-aria-label="Rechercher un étudiant">
+aria-label="Rechercher un ÃƒÂ©tudiant" placeholder="prenom">
        <input type="submit" value="Rechercher" name="button1" onclick="callServlet();">
 </form>
 </ul>
