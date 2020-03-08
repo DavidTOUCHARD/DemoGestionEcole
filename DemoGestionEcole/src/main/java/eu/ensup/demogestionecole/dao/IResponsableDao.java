@@ -7,7 +7,7 @@ import eu.ensup.demogestionecole.domaine.Responsable;
 
 public interface IResponsableDao {
 
-	public Etudiant deleteEtudiant(Etudiant etudiant);
+	public int deleteEtudiant(Long idetudiant);
 
 	public Etudiant insertEtudiant(Etudiant etudiant);
 

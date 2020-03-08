@@ -1,8 +1,6 @@
 package eu.ensup.demogestionecole.presentation;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,22 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import eu.ensup.demogestionecole.domaine.Etudiant;
-import eu.ensup.demogestionecole.domaine.Responsable;
-import eu.ensup.demogestionecole.service.IResponsableService;
 import eu.ensup.demogestionecole.service.ResponsableService;
 
 /**
- * Servlet implementation class ConnexionServlet
+ * Servlet implementation class LectureEtudiantServlet
  */
-public class ConnexionServlet extends HttpServlet {
+public class LectureEtudiantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	IResponsableService respserv = new ResponsableService();
+	ResponsableService respServ = new ResponsableService();
+	Etudiant etudiant;
 
-	public ConnexionServlet() {
+	public LectureEtudiantServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -51,22 +48,17 @@ public class ConnexionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String login = request.getParameter("loginuser");
-		String pwd = request.getParameter("mdpuser");
-		Responsable resp = new Responsable(login, pwd);
-		List<Responsable> responsableList = new ArrayList<Responsable>();
-		responsableList = respserv.lireResponsable(resp);
-
-		if (!responsableList.isEmpty()) {
+		if (request.getParameter("button1") != null) {
+			String nom = request.getParameter("nom");
+			String prenom = request.getParameter("prenom");
+			System.out.println("recherche dans le doPost : " + nom + " " + prenom);
+			Etudiant etu = new Etudiant(nom, prenom);
+			etudiant = respServ.lireEtudiant(etudiant);
 			HttpSession maSession = request.getSession();
-			maSession.setAttribute("responsable", resp);
-			List<Etudiant> listeEtudiants = respserv.listerEtudiants();
-			request.setAttribute("listeEtudiants", listeEtudiants);
-			RequestDispatcher rs = request.getRequestDispatcher("accueil.jsp");
+			maSession.setAttribute("etudiant", etudiant);
+			System.out.println("l'etudiant est : " + etudiant);
+			RequestDispatcher rs = request.getRequestDispatcher("InfoEtudiant.jsp");
 			rs.forward(request, response);
-		} else {
-			RequestDispatcher rs = request.getRequestDispatcher("404.jsp");
-			rs.include(request, response);
 		}
 		doGet(request, response);
 	}

@@ -1,25 +1,21 @@
 package eu.ensup.demogestionecole.presentation;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import eu.ensup.demogestionecole.domaine.Etudiant;
-import eu.ensup.demogestionecole.domaine.Responsable;
 import eu.ensup.demogestionecole.service.IResponsableService;
 import eu.ensup.demogestionecole.service.ResponsableService;
 
 /**
- * Servlet implementation class ConnexionServlet
+ * Servlet implementation class SupprimerEtudiantServlet
  */
-public class ConnexionServlet extends HttpServlet {
+public class SupprimerEtudiantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -27,7 +23,7 @@ public class ConnexionServlet extends HttpServlet {
 	 */
 	IResponsableService respserv = new ResponsableService();
 
-	public ConnexionServlet() {
+	public SupprimerEtudiantServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -51,22 +47,15 @@ public class ConnexionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String login = request.getParameter("loginuser");
-		String pwd = request.getParameter("mdpuser");
-		Responsable resp = new Responsable(login, pwd);
-		List<Responsable> responsableList = new ArrayList<Responsable>();
-		responsableList = respserv.lireResponsable(resp);
+		if (request.getParameter("button1") != null) {
+			Long idetudiant = Long.parseLong(request.getParameter("idetudiant"));
+			Etudiant etudiant1 = new Etudiant(request.getParameter("nom"), request.getParameter("prenom"));
+			Etudiant etudiant = new Etudiant("test", "test", "01236466", "labas", "03/03/03", "test@test");
+			System.out.println("l'etudiant supprimé est :" + etudiant);
+			respserv.supprimerEtudiant(idetudiant);
 
-		if (!responsableList.isEmpty()) {
-			HttpSession maSession = request.getSession();
-			maSession.setAttribute("responsable", resp);
-			List<Etudiant> listeEtudiants = respserv.listerEtudiants();
-			request.setAttribute("listeEtudiants", listeEtudiants);
 			RequestDispatcher rs = request.getRequestDispatcher("accueil.jsp");
 			rs.forward(request, response);
-		} else {
-			RequestDispatcher rs = request.getRequestDispatcher("404.jsp");
-			rs.include(request, response);
 		}
 		doGet(request, response);
 	}

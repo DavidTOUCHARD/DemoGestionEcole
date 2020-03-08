@@ -28,6 +28,12 @@ public class Etudiant {
 		super();
 	}
 
+	public Etudiant(String nom, String prenom) {
+		// TODO Auto-generated constructor stub
+		this.nom = nom;
+		this.prenom = prenom;
+	}
+
 	public Etudiant(String nom, String prenom, String tel, String adresse, String datenaissance, String mail) {
 		super();
 		this.nom = nom;

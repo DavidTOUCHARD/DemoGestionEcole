@@ -10,8 +10,48 @@
   	<description></description>
   	<servlet-class>eu.ensup.demogestionecole.presentation.ConnexionServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>CreationEtudiantServlet</servlet-name>
+  	<display-name>CreationEtudiantServlet</display-name>
+  	<description></description>
+  	<servlet-class>eu.ensup.demogestionecole.presentation.CreationEtudiantServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>LectureEtudiantServlet</servlet-name>
+  	<display-name>LectureEtudiantServlet</display-name>
+  	<description></description>
+  	<servlet-class>eu.ensup.demogestionecole.presentation.LectureEtudiantServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>SupprimerEtudiantServlet</servlet-name>
+  	<display-name>SupprimerEtudiantServlet</display-name>
+  	<description></description>
+  	<servlet-class>eu.ensup.demogestionecole.presentation.SupprimerEtudiantServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ListeEtudiantsServlet</servlet-name>
+  	<display-name>liste-etudiants</display-name>
+  	<description></description>
+  	<servlet-class>eu.ensup.demogestionecole.presentation.ListeEtudiantsServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ConnexionServlet</servlet-name>
   	<url-pattern>/ConnexionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CreationEtudiantServlet</servlet-name>
+  	<url-pattern>/CreationEtudiantServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LectureEtudiantServlet</servlet-name>
+  	<url-pattern>/LectureEtudiantServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SupprimerEtudiantServlet</servlet-name>
+  	<url-pattern>/SupprimerEtudiantServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ListeEtudiantsServlet</servlet-name>
+  	<url-pattern>/ListeEtudiantsServlet</url-pattern>
   </servlet-mapping>
 </web-app>

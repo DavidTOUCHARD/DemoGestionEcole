@@ -42,9 +42,9 @@ public class ResponsableService implements IResponsableService {
 	}
 
 	@Override
-	public Etudiant supprimerEtudiant(Etudiant etudiant) {
+	public int supprimerEtudiant(Long idetudiant) {
 		// TODO Auto-generated method stub
-		return respdao.deleteEtudiant(etudiant);
+		return respdao.deleteEtudiant(idetudiant);
 	}
 
 }

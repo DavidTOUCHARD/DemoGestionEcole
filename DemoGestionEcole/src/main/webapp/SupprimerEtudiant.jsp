@@ -13,8 +13,10 @@
 <title>Suppression etudiant</title>
 </head>
 <body>
-<form action ="DeleteEtudiantServlet" method="post">
+<form action ="SupprimerEtudiantServlet" method="post">
 <label for="site-search">Supprimer un étudiant:</label>
+<input type="number"  id="idetudiant" name="idetudiant"
+       aria-label="Rechercher un étudiant" placeholder="idetudiant">
 <input type="search" id="nom" name="nom"
        aria-label="Rechercher un étudiant" placeholder="nom">
 <input type="search" id="prenom" name="prenom" placeholder="prenom"

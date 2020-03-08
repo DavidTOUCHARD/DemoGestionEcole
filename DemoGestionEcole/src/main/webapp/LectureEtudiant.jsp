@@ -14,7 +14,7 @@
 </head>
 <body>
 <p class="text-left">Rechercher un etudiant</p>
-<form action ="ReadEtudiantServlet" method="post">
+<form action ="LectureEtudiantServlet" method="post">
 <input type="search" id="nom" name="nom"
        aria-label="Rechercher un Ã©tudiant" placeholder="nom">
 <input type="search" id="prenom" name="prenom"

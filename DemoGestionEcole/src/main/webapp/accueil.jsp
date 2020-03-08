@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ page import="eu.ensup.demogestionecole.domaine.Responsable"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head><style type="text/css">
@@ -22,18 +23,56 @@ Responsable resp = (Responsable) session.getAttribute("responsable");
 </ul>
 <h1> GESTION DE L'ECOLE ENSUP </h1>
 <h1> </h1>
-<h1> </h1>
-<input name="btn-creation" type="button" value="Créer un étudiant" onclick="document.location.href='creationEtudiant.jsp';">
-<h1> </h1>
-<input type="button" value="Associer un étudiant à un cours">
-<h1> </h1>
-<input type="button" value="Lire les informations d'un étudiant" onclick="document.location.href='LectureEtudiant.jsp';">
-<h1> </h1>
-<input type="button" value="Modifier les informations d'un étudiant">
-<h1> </h1>
-<input type="button" value="Supprimer un étudiant" onclick="document.location.href='SupprimerEtudiant.jsp';">
-<h1> </h1>
-<input type="button" value="Lister l'ensemble des étudiants de l'école">
-<h1> </h1>
+<h1> </h1>	
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" onclick="document.location.href='creationEtudiant.jsp';">Ajouter un étudiant</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" onclick="document.location.href='SupprimerEtudiant.jsp';">SupprimerEtudiant</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" onclick="document.location.href='LectureEtudiant.jsp';">LectureEtudiant</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="liste-etudiants" >Liste etudiant</a>
+      </li>
+    </ul>
+  </div>
+</nav>		
+		<table class="table table-striped table-dark">
+		  	<thead>
+			    <tr>
+					<!-- <th scope="col">#</th> -->
+					<th scope="col">Nom</th>
+					<th scope="col">Prenom</th>
+					<th scope="col">Mail</th>
+					<th scope="col">Téléphone</th>
+					<th scope="col">Date de naissance</th>
+			    </tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${listeEtudiants}" var="etudiant">
+					<tr>
+						<!-- <th scope="row"><%-- out.println(i); --%></th>  -->
+						<td>${etudiant.nom}</td>
+						<td>${etudiant.prenom}</td>
+						<td>${etudiant.mail}</td>
+						<td>${etudiant.telephone}</td>
+						<td>${etudiant.dateNaissance}</td>
+					</tr>
+				</c:forEach>
+		    </tbody>
+		</table>
+	</div>
 </body>
 </html>

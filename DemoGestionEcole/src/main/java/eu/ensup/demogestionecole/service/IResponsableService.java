@@ -17,5 +17,5 @@ public interface IResponsableService {
 
 	public Etudiant modifierEtudiant(Etudiant etudiant);
 
-	public Etudiant supprimerEtudiant(Etudiant etudiant);
+	public int supprimerEtudiant(Long idetudiant);
 }

@@ -1,5 +1,6 @@
 package eu.ensup.demogestionecole.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,6 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.TransactionRequiredException;
 
 import eu.ensup.demogestionecole.domaine.Etudiant;
 import eu.ensup.demogestionecole.domaine.Responsable;
@@ -17,7 +19,7 @@ public class ResponsableDao implements IResponsableDao {
 	EntityManager em;
 
 	@Override
-	public Etudiant deleteEtudiant(Etudiant etudiant) {
+	public int deleteEtudiant(Long idetudiant) {
 		emf = Persistence.createEntityManagerFactory("demoGestionEcole-pu");
 		em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
@@ -25,17 +27,18 @@ public class ResponsableDao implements IResponsableDao {
 			// debuter la transaction
 			tx.begin();
 			// effectuer l'opération
-			em.remove(etudiant);
+			em.remove(em.getReference(Etudiant.class, idetudiant));
 			// valider la transaction
 			tx.commit();
 			// fermer l'unité de persistence
 			em.close();
 			emf.close();
-			return etudiant;
-		} catch (Exception e) {
+			return 1;
+		} catch (TransactionRequiredException e) {
 			System.out.println(e.getMessage());
+			System.out.println(e);
 			tx.rollback();
-			return etudiant;
+			return 0;
 		}
 	}
 
@@ -65,7 +68,12 @@ public class ResponsableDao implements IResponsableDao {
 	@Override
 	public List<Etudiant> listEtudiants() {
 		// TODO Auto-generated method stub
-		return null;
+		emf = Persistence.createEntityManagerFactory("demoGestionEcole-pu");
+		em = emf.createEntityManager();
+		List<Etudiant> etu = new ArrayList();
+		Query req = em.createQuery("select etu from Etudiant etu");
+		etu = req.getResultList();
+		return etu;
 	}
 
 	@Override

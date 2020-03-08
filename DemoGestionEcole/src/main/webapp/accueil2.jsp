@@ -34,7 +34,7 @@ Responsable resp = (Responsable) session.getAttribute("responsable");
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#" onclick="document.location.href='creationEtudiant.html';">Ajouter un étudiant</a>
+        <a class="nav-link" href="#" onclick="document.location.href='creationEtudiant.jsp';">Ajouter un étudiant</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="#" onclick="document.location.href='SupprimerEtudiant.jsp';">SupprimerEtudiant</a>
