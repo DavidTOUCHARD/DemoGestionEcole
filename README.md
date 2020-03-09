@@ -31,3 +31,8 @@ Servlet
 HTML
 JSP
 JPA
+
+
+Vous pouvez vous connecter avec le compte admin :
+id : admin
+password : admin
