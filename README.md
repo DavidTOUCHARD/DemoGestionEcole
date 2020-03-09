@@ -1,6 +1,6 @@
 # DemoGestionEcole
 
-Installer XAMPP et créer la base demojpa.
+Installer XAMPP et créer la base gestionecole et y importer la base de données gestionecole.sql
 
 Installer TomcatServer 9.0 : http://objis.com/tutoriel-tomcat-n1-installation-tomcat-8/
 
